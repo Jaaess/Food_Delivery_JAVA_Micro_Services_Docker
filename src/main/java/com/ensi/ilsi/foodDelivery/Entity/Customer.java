@@ -13,6 +13,7 @@ private int id;
 private String name;
 private String adresse;
 private int number;
+
 public int getId() {
 	return id;
 }

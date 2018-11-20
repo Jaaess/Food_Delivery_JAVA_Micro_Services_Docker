@@ -23,7 +23,7 @@ public class Food {
     private String name;
     private double price;
     @OneToMany
-    private List<String> ingredients = new ArrayList<>(); 
+    private List<String> ingredients; 
 	
     
    	public int getId() {
