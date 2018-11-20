@@ -22,7 +22,6 @@ public class Food {
 	private int id;
     private String name;
     private double price;
-    @OneToMany
     private List<String> ingredients; 
 	
     

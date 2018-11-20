@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.ensi.ilsi.foodDelivery.Entity.Order;
 
-public interface OrderRepository extends CrudRepository<Order ,Integer > {
+public interface OrderRepository extends CrudRepository<Order ,Integer> {
 
 }
