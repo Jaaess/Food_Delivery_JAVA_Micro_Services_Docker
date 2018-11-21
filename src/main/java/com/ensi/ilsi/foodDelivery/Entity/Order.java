@@ -7,8 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Order {
@@ -16,6 +21,9 @@ public class Order {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private HashMap<Food,Integer> orderContent;
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "customer_id")
 	private Customer customer;
 	@Temporal(TemporalType.TIMESTAMP)
     private Date createdOn = new Date();
