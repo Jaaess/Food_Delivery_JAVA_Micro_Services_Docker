@@ -4,32 +4,29 @@ import java.util.List;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 
+/**
+ * Food.
+ */
 
+
+@SuppressWarnings("serial")
 @Entity
-public class Food {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+public class Food extends AbstractEntity  {
+	
     private String name;
     private double price;
     @ElementCollection
     private List<String> ingredients; 
 	
     
-   	public int getId() {
-		return id;
-	}
 
-
-	public void setId(int id) {
-		this.id = id;
-	}
+    	public Food() {
+    			// JPA
+    		}
+    
+   
 
 
 	public String getName() {
@@ -64,7 +61,7 @@ public class Food {
 
 	@Override
 	public String toString() {
-		return "Food [id=" + id + ", name=" + name + ", price=" + price + ", ingredients=" + ingredients + "]";
+		return "Food [name=" + name + ", price=" + price + ", ingredients=" + ingredients + "]";
 	}
 
 

@@ -3,23 +3,27 @@ package com.ensi.ilsi.foodDelivery.Entity;
 import java.util.Date;
 import java.util.HashMap;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
+import com.ensi.ilsi.foodDelivery.domain.enumeration.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/**
+ * A Order.
+ */
+
+@SuppressWarnings("serial")
 @Entity
-public class Order {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+public class Order extends AbstractEntity {
+	
 	private HashMap<Food,Integer> orderContent;
 	@JsonIgnore
 	@ManyToOne
@@ -28,7 +32,14 @@ public class Order {
 	@Temporal(TemporalType.TIMESTAMP)
     private Date createdOn = new Date();
 	private Date toDeliver = new Date();
-	
+	 @NotNull
+	 @Enumerated(EnumType.STRING)
+	 @Column(name = "status", nullable = false)
+	 private OrderStatus status;
+
+	public Order() {
+		// JPA
+			}
 	
 	@Override
 	public int hashCode() {
@@ -65,19 +76,10 @@ public class Order {
 	
 	@Override
 	public String toString() {
-		return "Order [id=" + id + ", orderContent=" + orderContent + ", customer=" + customer + ", createdOn="
+		return "Order [orderContent=" + orderContent + ", customer=" + customer + ", createdOn="
 				+ createdOn + ", toDeliver=" + toDeliver + "]";
 	}
 	
-	
-	public int getId() {
-		return id;
-	}
-	
-	
-	public void setId(int id) {
-		this.id = id;
-	}
 	
 	
 	public HashMap<Food, Integer> getOrderContent() {

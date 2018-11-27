@@ -1,25 +1,36 @@
 package com.ensi.ilsi.foodDelivery.Entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
+
+/**
+ * A Customer.
+ */
+@SuppressWarnings("serial")
 @Entity
-public class Customer {
-@Id
-@GeneratedValue(strategy = GenerationType.AUTO)
-private int id;
+public class Customer extends AbstractEntity {
+
+
 private String name;
 private String adresse;
 private int number;
 
-public int getId() {
-	return id;
+@Column(name = "enabled", nullable = false)
+private Boolean enabled;
+
+public Boolean getEnabled() {
+	return enabled;
 }
-public void setId(int id) {
-	this.id = id;
+
+public void setEnabled(Boolean enabled) {
+	this.enabled = enabled;
 }
+
+public Customer() {
+    // JPA
+}
+
 public String getName() {
 	return name;
 }
@@ -40,14 +51,14 @@ public void setNumber(int number) {
 }
 @Override
 public String toString() {
-	return "Customer [id=" + id + ", name=" + name + ", adresse=" + adresse + ", number=" + number + "]";
+	return "Customer [name=" + name + ", adresse=" + adresse + ", number=" + number + ", enabled=" + enabled + "]";
 }
 @Override
 public int hashCode() {
 	final int prime = 31;
 	int result = 1;
 	result = prime * result + ((adresse == null) ? 0 : adresse.hashCode());
-	result = prime * result + id;
+	result = prime * result + ((enabled == null) ? 0 : enabled.hashCode());
 	result = prime * result + ((name == null) ? 0 : name.hashCode());
 	result = prime * result + number;
 	return result;
@@ -66,7 +77,10 @@ public boolean equals(Object obj) {
 			return false;
 	} else if (!adresse.equals(other.adresse))
 		return false;
-	if (id != other.id)
+	if (enabled == null) {
+		if (other.enabled != null)
+			return false;
+	} else if (!enabled.equals(other.enabled))
 		return false;
 	if (name == null) {
 		if (other.name != null)
