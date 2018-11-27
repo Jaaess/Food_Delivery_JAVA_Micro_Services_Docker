@@ -2,6 +2,7 @@ package com.ensi.ilsi.foodDelivery.Entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 
 /**
@@ -9,6 +10,7 @@ import javax.persistence.Entity;
  */
 @SuppressWarnings("serial")
 @Entity
+@Table(name="customers")
 public class Customer extends AbstractEntity {
 
 

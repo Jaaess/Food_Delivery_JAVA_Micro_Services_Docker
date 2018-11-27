@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 
 /**
@@ -13,6 +14,7 @@ import javax.persistence.Entity;
 
 @SuppressWarnings("serial")
 @Entity
+@Table(name="foods")
 public class Food extends AbstractEntity  {
 	
     private String name;
