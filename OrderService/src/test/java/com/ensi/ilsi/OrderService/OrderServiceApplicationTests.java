@@ -1,4 +1,4 @@
-//package com.ensi.ilsi.foodDelivery.customerService;
+//package com.ensi.ilsi.OrderService;
 //
 //import org.junit.Test;
 //import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@
 //
 //@RunWith(SpringRunner.class)
 //@SpringBootTest
-//public class CustomerServiceApplicationTests {
+//public class OrderServiceApplicationTests {
 //
 //	@Test
 //	public void contextLoads() {

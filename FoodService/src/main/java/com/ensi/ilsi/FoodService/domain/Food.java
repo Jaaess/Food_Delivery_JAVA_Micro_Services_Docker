@@ -45,16 +45,8 @@ public class Food extends AbstractEntity {
    
     public Food() {
         // Empty Constructor for JPA
-    }
+    }	
 
-	public Food(Long id, @NotNull String name, @NotNull String description, @NotNull BigDecimal price) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.description = description;
-		this.price = price;
-		
-	}
 
 
 }

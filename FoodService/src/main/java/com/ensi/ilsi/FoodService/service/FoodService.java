@@ -1,6 +1,6 @@
 package com.ensi.ilsi.FoodService.service;
 
-import com.ensi.ilsi.foodDelivery.dto.FoodDto;
+import com.ensi.ilsi.foodDelivery.commons.dto.FoodDto;
 import com.ensi.ilsi.FoodService.domain.Food;
 import com.ensi.ilsi.FoodService.repository.FoodRepository;
 import lombok.RequiredArgsConstructor;
