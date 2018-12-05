@@ -11,14 +11,15 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.gateway.discovery.DiscoveryClientRouteDefinitionLocator;
 import org.springframework.cloud.gateway.discovery.DiscoveryLocatorProperties;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
-@EnableDiscoveryClient
+@EnableZuulProxy
 @SpringBootApplication
 public class ApiGatewayApplication {
 
-    private static final Log log = LogFactory.getLog(ApiGatewayApplication.class);
+    //private static final Log log = LogFactory.getLog(ApiGatewayApplication.class);
 
     @Autowired
     private DiscoveryClient discoveryClient;
