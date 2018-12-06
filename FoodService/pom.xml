@@ -99,6 +99,7 @@
             <groupId>com.ensi.ilsi.foodDelivery</groupId>
             <artifactId>foodDelivery-commons</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+            <type>jar</type>
         </dependency>
 
     </dependencies>

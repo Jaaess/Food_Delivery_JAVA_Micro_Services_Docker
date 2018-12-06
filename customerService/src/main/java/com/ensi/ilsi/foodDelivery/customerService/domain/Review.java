@@ -16,8 +16,10 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Data
+
 //@NoArgsConstructor
 @AllArgsConstructor
+
 @EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "review")
@@ -43,11 +45,13 @@ public class Review extends AbstractEntity {
     
     @ManyToOne
     private Customer customer;
-    
+
     public Review(String title, String description, Long rating) {
         this.title = title;
         this.description = description;
         this.rating = rating;
     }
+    
+  
 
 }

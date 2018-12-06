@@ -3,12 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.ensi.ilsi.foodDelivery</groupId>
-	<artifactId>CustomerService</artifactId>
+	<groupId>com.ensi.ilsi</groupId>
+	<artifactId>OrderService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>CustomerService</name>
+	<name>OrderService</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
@@ -19,15 +19,23 @@
 	</parent>
 
 	<properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-        <spring-cloud.version>Finchley.SR1</spring-cloud.version>
-        <spring.cloud.k8s.version>0.3.0.RELEASE</spring.cloud.k8s.version>
-    </properties>
-	
-    <dependencies>
-        <dependency>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+		     <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
@@ -40,18 +48,22 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-config</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <dependency>
+        
+<!--        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
-        </dependency>  
-        
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
@@ -64,7 +76,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-zipkin</artifactId>
         </dependency>
-       
+        -->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
@@ -75,12 +87,7 @@
             <artifactId>springfox-swagger2</artifactId>
             <version>2.9.2</version>
         </dependency>
-		<dependency>
-            <groupId>com.ensi.ilsi.foodDelivery</groupId>
-            <artifactId>foodDelivery-commons</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-		 <type>jar</type>
-		</dependency>
+        
         <dependency>
             <groupId>net.logstash.logback</groupId>
             <artifactId>logstash-logback-encoder</artifactId>
@@ -94,7 +101,8 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
         </dependency>
-
+        
+ 
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -104,65 +112,41 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+            <version>1.16.22</version>
+            <type>jar</type>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+        
+         <dependency>
+            <groupId>com.ensi.ilsi.foodDelivery</groupId>
+            <artifactId>foodDelivery-commons</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <type>jar</type>
         </dependency>
-    </dependencies>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
-
+        
+		
+	</dependencies>
 	<build>
-        <plugins>
-        	<plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-             <plugin>
-                <groupId>com.spotify</groupId>
-                <artifactId>dockerfile-maven-plugin</artifactId>
-                <version>1.4.4</version>
-                <configuration>
-                    <repository>monta512/${project.artifactId}</repository>
-                    <tag>${project.version}</tag>
-                </configuration>
-                <executions>
-                	<execution>
-                		<id>default</id>
-                		<phase>install</phase>
-                		<goals>
-                			<goal>build</goal>
-                			<goal>push</goal>
-                		</goals>
-               		</execution>
-                </executions>
-            </plugin>
-             <plugin>
-                <groupId>com.google.cloud.tools</groupId>
-                <artifactId>jib-maven-plugin</artifactId>
-                <version>0.10.1</version>
-                <configuration>
-                    <to>
-                    <image>registry.hub.docker.com/monta512/testrep:${project.artifactId}</image>
-                    </to>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-	
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+                        
+                        
+                         <plugin>
+        <groupId>com.google.cloud.tools</groupId>
+        <artifactId>jib-maven-plugin</artifactId>
+        <version>0.10.0</version>
+        <configuration>
+          <to>
+            <image>myimage</image>
+          </to>
+        </configuration>
+      </plugin>
+                        
+                        
+		</plugins>
+	</build>
 
 
 </project>
