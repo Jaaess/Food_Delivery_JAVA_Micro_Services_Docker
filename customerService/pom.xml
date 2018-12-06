@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.ensi.ilsi.foodDelivery</groupId>
-	<artifactId>customerService</artifactId>
+	<artifactId>CustomerService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>customerService</name>
+	<name>CustomerService</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
@@ -25,7 +25,7 @@
         <spring-cloud.version>Finchley.SR1</spring-cloud.version>
         <spring.cloud.k8s.version>0.3.0.RELEASE</spring.cloud.k8s.version>
     </properties>
-
+	
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -51,11 +51,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
         </dependency>  
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-kubernetes-discovery</artifactId>
-            <version>${spring.cloud.k8s.version}</version>
-        </dependency>
+        
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
@@ -130,13 +126,43 @@
 
 
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+        <plugins>
+        	<plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+             <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>1.4.4</version>
+                <configuration>
+                    <repository>monta512/${project.artifactId}</repository>
+                    <tag>${project.version}</tag>
+                </configuration>
+                <executions>
+                	<execution>
+                		<id>default</id>
+                		<phase>install</phase>
+                		<goals>
+                			<goal>build</goal>
+                			<goal>push</goal>
+                		</goals>
+               		</execution>
+                </executions>
+            </plugin>
+             <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>0.10.1</version>
+                <configuration>
+                    <to>
+                    <image>registry.hub.docker.com/monta512/testrep:${project.artifactId}</image>
+                    </to>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+	
 
 
 </project>

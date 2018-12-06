@@ -5,9 +5,9 @@ zuul:
     order:
       path: /order/**
       serviceId: order-service
-    product:
-      path: /product/**
-      serviceId: product-service
+    Food:
+      path: /Food/**
+      serviceId: Food-service
     customer:
       path: /customer/**
       serviceId: customer-service

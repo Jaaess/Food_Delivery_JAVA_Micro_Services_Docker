@@ -16,8 +16,10 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Data
-@NoArgsConstructor
-//@AllArgsConstructor
+
+//@NoArgsConstructor
+@AllArgsConstructor
+
 @EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "review")

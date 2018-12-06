@@ -11,10 +11,13 @@ name:
 spring:
   application:
     name: order-service  
+  cloud:
+    config:
+      override-system-properties: false
   sleuth:
     sampler:
       probability: 1
-  h2:
+h2:
     console:
       enabled: true
 

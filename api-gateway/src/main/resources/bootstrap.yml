@@ -22,7 +22,7 @@ zuul:
   routes:
     customer:
       path: /customer/**
-    product:
-      path: /food/**
+    Food:
+      path: /Food/**
     order:
       path: /order/**

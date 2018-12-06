@@ -14,8 +14,8 @@ WORKDIR /app
 # Copy the executable into the container at /app
 ADD target/*.jar app.jar
 
-# Make port 8888 available to the world outside this container
-EXPOSE 8888
+# Make port 9992 available to the world outside this container
+EXPOSE 9992
 
 # Run app.jar when the container launches
 CMD ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/app/app.jar"]
