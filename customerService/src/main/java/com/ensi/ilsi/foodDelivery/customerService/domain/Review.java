@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Data
-@NoArgsConstructor
+//@NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @Entity

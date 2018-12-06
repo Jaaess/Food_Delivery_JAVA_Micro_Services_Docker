@@ -11,10 +11,10 @@ name:
 spring:
   application:
     name: order-service  
-cloud:
+  cloud:
     config:
       override-system-properties: false
-sleuth:
+  sleuth:
     sampler:
       probability: 1
 h2:
@@ -26,4 +26,8 @@ logstash:
   port: 5000
   queue-size: 512
 
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
